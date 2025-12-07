@@ -1,4 +1,28 @@
 from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+import os
+import requests
+import json
+from prompt import SHORTDUMP_PROMPT
+from model_types import DumpRequest
+from healthcheck import health
+
+app = FastAPI(title="SAP Short Dump Analyzer")
+
+
+# Read environment variables (set these via secrets/config in AI Core)
+AICORE_CHAT_URL = os.environ.get("AICORE_CHAT_URL")
+TOKEN_URL = os.environ.get("TOKEN_URL")
+CLIENT_ID = os.environ.get("CLIENT_ID")
+CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
+TENANT_ID = os.environ.get("TENANT_ID")
+RESOURCE_GROUP = os.environ.get("RESOURCE_GROUP", "default")
+
+
+if not all([AICORE_CHAT_URL, TOKEN_URL, CLIENT_ID, CLIENT_SECRET, TENANT_ID]):
+# we allow container to start but will error on requests if env missing
+app.logger = app.logger if hasattr(app, 'logger') else None
+
 
 
 def get_token():
@@ -64,9 +88,6 @@ return {"analysis_text": content}
 
 
 return {"raw": data}
-
-
-
 
 @app.get("/healthz")
 def healthz():
