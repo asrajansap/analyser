@@ -1,5 +1,7 @@
-# SAP Short Dump Analyzer
 
+
+# SAP Short Dump Analyzer
+https://chatgpt.com/c/69354d64-7f84-8324-9167-3ff96bb3a084
 
 This repository packages a FastAPI service that analyzes SAP ST22 short dumps by calling an LLM deployed in SAP AI Core.
 
