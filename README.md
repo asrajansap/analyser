@@ -31,3 +31,45 @@ export AICORE_CHAT_URL=...
 export TENANT_ID=...
 uvicorn app.main:app --reload --port 8080# analyser
 Analyser
+
+##test
+curl -X POST http://localhost:8080/analyze ^
+  -H "Content-Type: application/json" ^
+  -d "@dump.json"
+# or
+curl -X POST http://localhost:8080/analyze ^
+  -H "Content-Type: application/json" ^
+  -d "{
+    \"id\": \"DUMP_032\",
+    \"timestamp\": \"2025-11-26T08:01:32Z\",
+    \"program\": \"ZPROGRAM_032\",
+    \"include\": \"ZPROGRAM_032\",
+    \"line\": 97,
+    \"transaction_code\": \"ZTCODE032\",
+    \"error_id\": \"NULL_REF\",
+    \"exception\": {
+      \"type\": \"CX_SY_REF_IS_INITIAL\",
+      \"message\": \"Attempt to access a NULL reference.\"
+    },
+    \"source_code\": {
+      \"before\": [
+        \"sample_var1 = 100.\",
+        \"sample_var2 = 0.\",
+        \"result = sample_var1 / sample_var2.\"
+      ],
+      \"after\": []
+    },
+    \"call_stack\": [
+      {
+        \"program\": \"ZPROGRAM_032\",
+        \"method\": \"EXECUTE\",
+        \"line\": 97
+      }
+    ],
+    \"system_info\": {
+      \"sap_release\": \"757\",
+      \"kernel\": \"8.01\",
+      \"db\": \"HANA\"
+    }
+  }"
+
