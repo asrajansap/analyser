@@ -14,7 +14,7 @@ app = FastAPI(title="SAP Short Dump Analyzer")
 # -----------------------------------------------------------
 
 #AICORE_CHAT_URL = os.environ.get("AICORE_CHAT_URL")
-AICORE_CHAT_URL = 'https://api.ai.prod.eu-central-1.aws.ml.hana.ondemand.com/v2/inference/deployments/d140b0f59064958a/chat/completions?api-version=2023-05-15'
+AICORE_CHAT_URL = 'https://api.ai.prod.eu-central-1.aws.ml.hana.ondemand.com/v2/inference/deployments/d140b0f59064958aa/chat/completions?api-version=2023-05-15'
 #TOKEN_URL = os.environ.get("TOKEN_URL")
 TOKEN_URL = 'https://hclbuild-g03o2ijo.authentication.eu10.hana.ondemand.com/oauth/token'
 CLIENT_ID = os.environ.get("CLIENT_ID")
